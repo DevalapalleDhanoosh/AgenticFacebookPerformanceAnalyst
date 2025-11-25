@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data
+*.csv
+!data/synthetic_fb_ads_undergarments.csv
+
+# Logs
+*.log
+outputs/debug_logs/
+
+# Environment
+.env
+.venv/
+env/

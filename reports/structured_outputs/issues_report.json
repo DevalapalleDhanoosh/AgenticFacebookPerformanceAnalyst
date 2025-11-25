@@ -1,0 +1,16 @@
+{
+    "high_cpc_campaigns": 624,
+    "low_roas_campaigns": 192,
+    "low_ctr_creatives": 1014,
+    "high_cpm_campaigns": 599,
+    "low_purchase_campaigns": 1562,
+    "platform_roas": {
+        "Facebook": 6.697509627727856,
+        "Instagram": 6.459323213156231
+    },
+    "country_roas": {
+        "IN": 6.175955334987592,
+        "UK": 6.8437322834645675,
+        "US": 6.668621908127208
+    }
+}

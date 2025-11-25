@@ -1,0 +1,8 @@
+# Template: Issue Identification
+"Identify major performance issues in the dataset. Respond in bullet points."
+
+# Template: Insight Extraction
+"Generate 5 actionable insights that can improve Facebook Ads ROI."
+
+# Template: Structured Output
+"Convert results into a JSON with keys: issues, insights, recommendations."

@@ -1,0 +1,7 @@
+steps:
+  - load_data
+  - preprocess
+  - identify_issues
+  - analyze_performance
+  - generate_structured_output
+  - export_reports

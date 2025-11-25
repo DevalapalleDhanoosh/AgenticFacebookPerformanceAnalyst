@@ -1,0 +1,11 @@
+{
+  "requirements": [
+    "Data ingestion",
+    "Data cleaning",
+    "Issue identification",
+    "Analysis",
+    "Final structured output",
+    "Report creation",
+    "Agentic workflow explanation"
+  ]
+}
