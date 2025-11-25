@@ -1,252 +1,382 @@
-Agentic Facebook Performance Analyst
+Agentic Facebook Performance Analyst – Kasparro Assignment
 
-Kasparro Assignment – Complete End-to-End Solution
-
-
-
-This repository contains the full implementation of the Agentic AI System Design Assignment, designed to analyze Facebook Ads performance using modular agent workflows.
+1\. Overview
 
 
 
-The system ingests campaign data, cleans it, identifies issues, generates insights, and produces structured outputs (JSON, visualizations, reports).
+This repository contains a modular, production-style implementation of the Kasparro Applied AI Engineer Assignment.
 
-It strictly follows the evaluator checklist, ensuring completeness and clarity.
+The system analyzes Facebook Ads performance using a structured, agentic pipeline and produces:
 
 
 
-Repository Structure
+insights.json (key performance insights)
+
+
+
+creatives.json (creative recommendations)
+
+
+
+report.md (final combined analyst report)
+
+
+
+The solution follows a clean separation of layers—config, data, processing, pipelines, outputs—and fully meets the evaluator checklist.
+
+
+
+2\. Project Folder Structure
 
 AgenticFacebookPerformanceAnalyst/
 
 │
 
-├── configs/                 # System prompts, pipeline configs, task definitions
+├── configs/                      # System prompts \& task configs
 
-├── data/                     # Raw + synthetic datasets
+│       evaluation\_criteria.json
 
-├── docs/                    # Assignment requirements, evaluation checklist, architecture docs
+│       pipeline\_config.yaml
 
-├── models/                # Placeholder checkpoints \& vector store metadata
+│       prompt\_templates.txt
 
-├── notebooks/           # Jupyter notebooks (01–05) covering each task step
+│       system\_prompt.json
 
-├── outputs/                # Intermediate outputs, debug logs, agent runs
+│       task\_definitions.json
 
-├── reports/                # JSON insights, issue reports, visualizations, presentations
+│
 
-└── src/                      # Core Python modules, utils, agent logic
+├── data/                         # Input dataset
 
+│       synthetic\_fb\_ads\_undergarments.csv
 
+│
 
-Each folder maps to a specific requirement from the assignment and evaluator checklist.
+├── docs/                         # Architecture, requirements \& logs
 
+│       architecture.md
 
+│       assignment\_requirements.md
 
-Assignment Requirements — Completion Status
+│       evaluation\_checklist.md
 
+│       project\_log.md
 
+│
 
-&nbsp;Requirement	                          Status	                      Location
+├── models/                       # Placeholder model space
 
-Data Ingestion	                       Completed	    notebooks/01\_data\_ingestion.ipynb
+│       checkpoints/
 
-Data Preprocessing	               Completed	    notebooks/02\_data\_cleaning.ipynb
+│       vector\_store/
 
-Issue Identification	               Completed	    notebooks/03\_issue\_identification.ipynb
+│
 
-Performance Insights	               Completed	    notebooks/04\_insights\_generation.ipynb
+├── notebooks/                    # Optional development notebooks
 
-Structured Outputs (JSON)	       Completed	    reports/structured\_outputs/
+│       01\_data\_ingestion.ipynb
 
-Visualizations	                       Completed	    reports/visualizations/
+│       02\_data\_cleaning.ipynb
 
-Final Report (PPT/MD/PDF)      Completed	    reports/presentations/
+│       03\_issue\_identification.ipynb
 
-Agentic Workflow Design	       Completed	    docs/architecture.md
+│       04\_insights\_generation.ipynb
 
-Documentation	                       Completed	    README + docs/
+│       05\_report\_generation.ipynb
 
+│
 
+├── outputs/
 
-The project follows the exact order and completeness expected by the evaluator.
+│   ├── agent\_runs/               # Example agent run traces
 
+│   ├── debug\_logs/               # Logs for debugging
 
+│   ├── intermediate\_files/       # Cleaned + processed CSV files
 
-Agentic Workflow Architecture
+│   │       cleaned\_data.csv
 
+│   │       raw\_ingested\_data.csv
 
+│   └── final/                    # \*\*\*Required Assignment Outputs\*\*\*
 
-This system uses a layered agent architecture, enabling modular and explainable execution.
+│           insights.json
 
+│           creatives.json
 
+│           report.md
 
---- Components
+│
 
+├── reports/
 
+│   ├── structured\_outputs/       # Additional JSON outputs
 
-* Agent Layer
+│   ├── visualizations/           # Charts \& KPIs
 
-&nbsp;   - Task definitions, system prompts, workflow logic (configs/)
+│       ctr\_trend.png
 
+│       cpm\_trend.png
 
+│       country\_roas.png
 
-* Processing Layer
+│   ├── logs/
 
-&nbsp;   - All transformations, cleaning, analysis steps (notebooks/, src/)
+│   └── presentations/            # Exported report documents
 
+│       final\_report.md
 
+│
 
-* Output Layer
+└── src/
 
-&nbsp;   - JSON insights, plots, structured outputs (reports/, outputs/)
+&nbsp;   ├── agent.py                  # Agentic workflow utilities
 
+&nbsp;   ├── analysis\_utils.py
 
+&nbsp;   ├── data\_cleaning.py
 
-* Data Layer
+&nbsp;   ├── data\_loader.py
 
-&nbsp;    - Input datasets (raw \& processed) (data/)
+&nbsp;   └── pipelines/                # \*\*\*Core Pipeline Scripts\*\*\*
 
+&nbsp;           generate\_insights.py
 
+&nbsp;           generate\_creatives.py
 
---- Workflow Steps
+&nbsp;           generate\_report.py
 
 
 
-1. Load and validate dataset
+3\. Pipeline Architecture
 
 
 
-2\. Clean \& preprocess
+The agentic workflow is implemented as a three-stage pipeline:
 
 
 
-3\. Identify performance issues
+Stage 1 — Insights Generation (generate\_insights.py)
 
 
 
-4\. Analyze KPIs (CPC, CPM, CTR, ROAS)
+Loads dataset
 
 
 
-5\. Generate insights \& recommendations
+Computes descriptive statistics
 
 
 
-6\. Produce JSON outputs
+Uses an offline LLM-style generator to produce structured insights
 
 
 
-7\. Export final visualizations \& reports
+Writes outputs/final/insights.json
 
 
 
-A complete diagram is provided in docs/architecture.md.
+Stage 2 — Creative Recommendations (generate\_creatives.py)
 
 
 
-Key Files to Review
+Reads insights
 
-File / Folder	                                              Purpose
 
-configs/system\_prompt.json	         Defines agent behavior \& chain of thought rules
 
-configs/task\_definitions.json	         Maps assignment tasks to agent steps
+Produces recommended ad copies, image ideas, video hooks
 
-src/agent.py	                                 Core logic for issues, insights, structured outputs
 
-reports/structured\_outputs/\*.json  	 Final JSON outputs for insights \& issues
 
-notebooks/\*.ipynb	                         Executable step-by-step workflow
+Saves to outputs/final/creatives.json
 
-docs/evaluation\_checklist.md	         Verifies assignment compliance
 
 
+Stage 3 — Final Report Generation (generate\_report.py)
 
-Technologies Used
 
 
+Combines insights + creative recommendations
 
--- Python (Pandas, NumPy)
 
 
+Produces a polished markdown report
 
--- Jupyter Notebook
 
 
+Saves to outputs/final/report.md
 
--- Matplotlib / Seaborn
 
 
+4\. Setup Instructions
 
--- JSON / YAML
+Prerequisites
 
 
 
--- Modular agentic pipeline design
+Python 3.10+
 
 
 
-How to Run the Project
+Git installed
 
-1\. Open Jupyter Notebook
 
 
+No API key required (offline pipeline)
 
-2\. Run notebooks in order
 
 
+Install dependencies
 
-Execute these step-by-step:
+pip install -r requirements.txt
 
 
 
--- 01\_data\_ingestion.ipynb
+5\. How to Run the Pipeline
 
+1️⃣ Generate insights
 
+python src/pipelines/generate\_insights.py
 
--- 02\_data\_cleaning.ipynb
 
 
 
--- 03\_issue\_identification.ipynb
 
+Output → outputs/final/insights.json
 
 
--- 04\_insights\_generation.ipynb
 
+2️⃣ Generate creative recommendations
 
+python src/pipelines/generate\_creatives.py
 
--- 05\_report\_generation.ipynb (optional)
 
 
 
-3\. Check Generated Outputs
 
+Output → outputs/final/creatives.json
 
 
--- JSON outputs → reports/structured\_outputs/
 
+3️⃣ Generate final report
 
+python src/pipelines/generate\_report.py
 
--- Charts → reports/visualizations/
 
 
 
--- Agent run logs → outputs/agent\_runs/
 
+Output → outputs/final/report.md
 
 
--- Intermediate CSVs → outputs/intermediate\_files/
 
+6\. Assignment Outputs
 
 
 
+Your final mandatory files are located at:
 
-Author
+
+
+outputs/final/insights.json
+
+outputs/final/creatives.json
+
+outputs/final/report.md
+
+
+
+
+
+These files satisfy the official Kasparro deliverables:
+
+
+
+~ insights.json
+
+
+
+~ creatives.json
+
+
+
+~ report.md
+
+
+
+~ clean modular code
+
+
+
+~ agentic pipeline architecture
+
+
+
+7\. Versioning \& Release (as required)
+
+
+
+Create release tag:
+
+
+
+v1.0
+
+
+
+
+
+GitHub → Releases → New Release → Tag v1.0
+
+
+
+Include release notes:
+
+
+
+Kasparro Agentic Facebook Analyst – v1.0
+
+Contains insights.json, creatives.json, report.md, modular pipeline, and documentation.
+
+
+
+8\. Compliance with Evaluation Checklist
+
+
+
+This project meets the evaluator requirements:
+
+
+
+Requirement	                         Status
+
+Data ingestion	                         ✔ Completed
+
+Cleaning \& preprocessing	         ✔ Completed
+
+Issue identification	                 ✔ Implemented
+
+KPI analysis	                         ✔ Implemented
+
+Agentic pipeline	                         ✔ Modular
+
+Structured outputs	                 ✔ insights.json / creatives.json / report.md
+
+Documentation	                         ✔ README + docs
+
+Reproducibility	                         ✔ Fully runnable
+
+Extra (not required but included)	Visualizations, intermediate files, logs
+
+
+
+
+
+9\. Author
 
 
 
 Dhanoosh Reddy
 
-Agentic AI \& Data Analysis Engineering — Kasparro Assignment
+Applied AI Engineer – Kasparro Assignment
 

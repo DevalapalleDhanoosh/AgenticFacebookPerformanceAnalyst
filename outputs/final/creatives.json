@@ -1,0 +1,19 @@
+{
+    "creative_strategy": "Based on dataset-level insights, generate ad copies, images, and video hooks.",
+    "ad_copies": [
+        "Experience all-day comfort. Premium undergarments built for daily wear.",
+        "Soft. Breathable. Comfortable. The only undergarment you'll ever want.",
+        "Feel the difference \u2014 moisture-wicking fabric with perfect stretch."
+    ],
+    "image_ideas": [
+        "Close-up fabric texture with soft lighting",
+        "Lifestyle shot of model wearing the undergarment in morning routine",
+        "Flat-lay of the product with pastel background for a clean premium feel"
+    ],
+    "video_hooks": [
+        "3-second comfort test: Pull, stretch, and bounce demonstration.",
+        "\u2018I switched to this and never looked back\u2019 \u2014 UGC testimonial.",
+        "Behind-the-scenes stitching and material selection preview."
+    ],
+    "based_on_insights": "Spend, impressions, clicks, purchases, and revenue were analyzed.\nHigher ROAS campaigns should be prioritized in scaling decisions.\nCampaigns with below-average CTR should be retested with new creatives.\nAudience segments with above-average purchases indicate strong intent.\nCreative messages with high CTR but low ROAS require funnel optimization."
+}
